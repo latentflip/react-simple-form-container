@@ -1,1 +1,3 @@
-# react-form-component
+# react-simple-form-container
+
+Check the example:
