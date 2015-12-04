@@ -25,7 +25,7 @@ let FormGroupConnected = connectForm({
 
 let Form = React.createClass({
   render() {
-    let { onSubmit, fields } = this.props;
+    let { onSubmit, fields, fieldGroups } = this.props;
 
     return (
       <form onSubmit={onSubmit}>
@@ -41,6 +41,17 @@ let Form = React.createClass({
 
         <FormGroupConnected {...fields.subObject} />
 
+        <h2>ArrayGroup</h2>
+        {fieldGroups.childThings.fields.map((field, idx) => {
+          return (
+            <div key={idx}>
+              <FormGroupConnected {...field} />
+              <button onClick={() => fieldGroups.childThings.removeOne(idx)}>Del</button>
+            </div>
+          );
+        })}
+        <button onClick={fieldGroups.childThings.addOne}>Add one</button>
+
         <button type='submit'>Submit</button>
       </form>
     );
@@ -51,6 +62,13 @@ let ConnectedForm = connectForm({
   fields: [
     'aTextfield', 'aCheckbox', 'aSelect', 'subObject'
   ],
+  fieldGroups: {
+    'childThings': {
+      addOne() {
+        return { subThing1: '', subThing2: ''}
+      }
+    }
+  },
   getValues(props) {
     return props.value;
   }
