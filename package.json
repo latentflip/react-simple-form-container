@@ -1,0 +1,29 @@
+{
+  "name": "react-form-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./modules --loose all -d lib --ignore '__tests__'",
+    "prepublish": "npm run build",
+    "postinstall": "node ./npm-scripts/postinstall.js",
+    "start": "webpack-dev-server --config ./example/webpack.config.js"
+  },
+  "peerDependencies": {
+    "react": "0.14.x"
+  },
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "babel-cli": "^6.2.0",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "hjs-webpack": "^5.1.0",
+    "react": "0.14.x",
+    "react-dom": "0.14.x",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
